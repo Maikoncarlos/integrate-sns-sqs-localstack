@@ -1,0 +1,20 @@
+$ awslocal sqs create-queue --queue-name my-queue
+
+$ awslocal sns create-topic --name my-topic
+
+$ awslocal sns subscribe --topic-arn "arn:aws:sns:us-east-1:000000000000:my-topic" \
+    --protocol sqs \
+    --notification-endpoint "arn:aws:sqs:us-east-1:000000000000:my-queue" \
+    --attributes "{\"RawMessageDelivery\": \"true\"}"
+
+$ awslocal sns list-subscriptions
+
+$ awslocal sns set-subscription-attributes \
+      --subscription-arn "arn:aws:sns:us-east-1:000000000000:my-topic:SubscriptionArn" \
+      --attribute-name RawMessageDelivery \
+      --attribute-value "true"
+
+ OBS:
+ Quando vamos subscrever o topico com uma fila SQS para que consigamos fazer o parse das informações da fila
+ corretamente, temos que colocar o campo --attributes "{\"RawMessageDelivery\": \"true\"}" caso contrário ele irá
+ nos devolver tudo como nulo.
