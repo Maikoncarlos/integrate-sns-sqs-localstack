@@ -39,3 +39,8 @@ doc-localstack-sqs: https://docs.localstack.cloud/user-guide/aws/sqs/
 
 
 #### --> Instruções para criação de ambinete local no arquivo localstack.txt
+
+### Se quiser ver a Interface Gráfica da LocalStack
+https://app.localstack.cloud/sign-in
+- fazer o login, de preferência com a sua conta do GitHub;
+- ir no menu esquerdo em 'Default Instance' e clicar no Serviço de SNS e SQS ou em outro que queira ver;
